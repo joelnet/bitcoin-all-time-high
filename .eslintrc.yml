@@ -1,0 +1,15 @@
+extends: airbnb-base
+rules:
+  semi:
+  - error
+  - never
+  arrow-parens:
+  - off
+  no-sequences:
+  - off
+  object-curly-newline:
+  - off
+  comma-dangle:
+  - off
+  no-confusing-arrow:
+  - off
