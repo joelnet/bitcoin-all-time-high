@@ -7,8 +7,6 @@ import isEmpty from 'ramda/src/isEmpty'
 import createStore from './store'
 
 const isNotEmpty = complement(isEmpty)
-const isAllTimeHigh = store => event =>
-  +event.trade.price > +store.getState().high
 
 export const plugins = ['gdax', 'twitter', 'media']
 
@@ -23,7 +21,7 @@ export default async ({
     .subscribe(err => log.error(err))
 
   Observable.fromEvent(events, 'gdax.TRADE')
-    .filter(isAllTimeHigh(store))
+    .filter(store.isAllTimeHigh)
     .subscribe(({ exchange, trade }) =>
       events.emit('core.NEW_HIGH', {
         exchange,

@@ -4,8 +4,9 @@ import promisify from 'functional-helpers/promisify'
 import when from 'ramda/src/when'
 import indexOf from 'ramda/src/indexOf'
 
-const getCleanImageData =
-  when(indexOf(','), image => image.substr(image.indexOf(',') + 1))
+const hasMimeType = indexOf(',')
+const stripMimeType = image =>
+  image.substr(image.indexOf(',') + 1)
 
 export default ({ events }) => {
   const options = config.get('twitter')
@@ -13,7 +14,7 @@ export default ({ events }) => {
   const post = promisify(twit.post, twit)
 
   const postMedia = async ({ exchange, high, time, image, text }) => {
-    const newImage = getCleanImageData(image)
+    const newImage = when(hasMimeType, stripMimeType, image)
     const { media_id_string } = await post('media/upload', { media_data: newImage })
 
     await post('media/metadata/create', { media_id: media_id_string, alt_text: { text } })
