@@ -1,10 +1,11 @@
 import Datastore from 'nedb'
 import promisify from 'functional-helpers/promisify'
+import when from 'ramda/src/when'
 
-export default ({ filename }) => {
+export default ({ filename, indexField }) => {
   const db = new Datastore({ filename, autoload: true })
 
-  db.ensureIndex({ fieldName: 'id', unique: true })
+  when(x => x, fieldName => db.ensureIndex({ fieldName, unique: true }), indexField)
 
   return {
     find: promisify(db.find, db),

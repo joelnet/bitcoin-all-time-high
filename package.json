@@ -6,8 +6,8 @@
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
-    "start": "babel-node src/index all-time-high",
-    "forever": "forever -c babel-node src/index.js all-time-high",
+    "start": "babel-node src/index all-time-high tracker",
+    "forever": "forever -c babel-node src/index.js all-time-high tracker",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src"
   },
@@ -19,6 +19,7 @@
     "config": "^1.28.1",
     "eventemitter2": "^4.1.2",
     "forever": "^0.15.3",
+    "fs-extra": "^5.0.0",
     "functional-helpers": "github:joelnet/functional-helpers",
     "gdax": "^0.4.2",
     "jimp": "^0.2.28",
