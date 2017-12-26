@@ -1,6 +1,7 @@
 /* eslint-disable global-require,import/no-dynamic-require */
 import { EventEmitter2 } from 'eventemitter2'
 import fs from 'fs-extra'
+import './init'
 import Log from './log'
 import Datastore from './lib/datastore'
 import { getRecipes, getPlugins } from './lib/pluginHelper'
