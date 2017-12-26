@@ -1,10 +1,12 @@
 import { Observable } from 'rxjs'
+import moment from 'moment'
 
 export const plugins = ['gdax', 'twitter', 'media']
 
 const dataDir = `${process.cwd()}/.data`
+
 const getFileDate = date =>
-  date.toLocaleDateString('en-US').split('/').reverse().join('-')
+  moment(date).format('YYYY-MM-DD')
 
 export default async ({
   dependencies: { fs, log },

@@ -23,7 +23,7 @@ gdax:
 
 ## Production Install
 
-Installing and running as a shell script
+### Installing and running as a shell script
 
 ```bash
 # install dependencies
@@ -36,7 +36,7 @@ npm run dist
 npm run forever
 ```
 
-Installing as a service
+### Installing as a service
 
 ```bash
 # install forever-service
@@ -46,19 +46,19 @@ sudo npm install -g forever-service
 sudo forever-service install all-time-high -s dist/index.js -o " all-time-high tracker"
 ```
 
-Start the service
+### Start the service
 
 ```bash
 sudo service all-time-high start
 ```
 
-Stop the service
+### Stop the service
 
 ```bash
 sudo service all-time-high stop
 ```
 
-Status
+### Status
 
 ```bash
 # list status of all services
@@ -66,6 +66,12 @@ service --status-all
 
 # list all forever services running
 sudo npx forever list
+```
+
+If tracker is running you can watch live price updates
+
+```bash
+tail -f .data/tracker-<year>-<month>-<day>.csv
 ```
 
 ## Licenses
