@@ -23,7 +23,7 @@ gdax:
 
 ## Production Install
 
-### Installing and running as a shell script
+### Running as a shell script
 
 ```bash
 # install dependencies
@@ -39,6 +39,12 @@ npm run forever
 ### Installing as a service
 
 ```bash
+# install dependencies
+npm install
+
+# build project
+npm run dist
+
 # install forever-service
 sudo npm install -g forever-service
 
