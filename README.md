@@ -56,6 +56,7 @@ sudo service all-time-high start
 
 ```bash
 sudo service all-time-high stop
+sudo npx forever stop all-time-high
 ```
 
 ### Status
