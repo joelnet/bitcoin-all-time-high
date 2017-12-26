@@ -7,12 +7,15 @@
   "main": "src/index.js",
   "scripts": {
     "start": "babel-node src/index all-time-high tracker",
-    "forever": "forever -c babel-node src/index.js all-time-high tracker",
+    "forever": "NODE_ENV=production forever start dist/index.js all-time-high tracker",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist",
+    "dist": "npm run clean && babel src --out-dir dist",
     "lint": "eslint src"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "bunyan": "^1.8.12",
     "bunyan-format": "^0.2.1",
