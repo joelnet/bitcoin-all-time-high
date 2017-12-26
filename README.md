@@ -1,6 +1,17 @@
 # Bitcoin All-Time-High
 
-README coming soon
+## Production Install
+
+```bash
+# install dependencies
+npm install
+
+# build project
+npm run dist
+
+# run forever
+npm run forever
+```
 
 ## Licenses
 
