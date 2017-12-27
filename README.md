@@ -90,3 +90,4 @@ tail -f .data/tracker-<year>-<month>-<day>.csv
 ## Licenses
 
 * Rocket - https://pixabay.com/en/rocket-spaceship-clip-art-clipart-2841765/
+* Creative-Tail-rocket.svg - By Creative Tail [CC BY 4.0 (http://creativecommons.org/licenses/by/4.0)], via Wikimedia Commons
