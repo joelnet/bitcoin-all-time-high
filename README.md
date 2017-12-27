@@ -1,4 +1,4 @@
-# Bitcoin All-Time-High
+# Bitcoin All-Time-High Twitter Bot
 
 Source Code for [@AllTimeHighBot](https://twitter.com/AllTimeHighBot).
 
