@@ -1,5 +1,11 @@
 # Bitcoin All-Time-High
 
+Source Code for [@AllTimeHighBot](https://twitter.com/AllTimeHighBot).
+
+Example:
+
+![Bitcoin All-Time-High Tweet](./images/tweet.png "Bitcoin All-Time-High Tweet")
+
 ## Configuration
 
 Modify the following settings in `config/default.yml` or create a new `local.yml`. `local.yml` will not be checked into GIT.
