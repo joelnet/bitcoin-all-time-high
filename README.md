@@ -49,7 +49,7 @@ npm run dist
 sudo npm install -g forever-service
 
 # install service
-sudo forever-service install all-time-high -s dist/index.js -o " all-time-high tracker"
+sudo forever-service install all-time-high -s dist/index.js
 ```
 
 ### Start the service

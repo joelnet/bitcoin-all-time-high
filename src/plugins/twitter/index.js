@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import Twit from 'twit'
 import config from 'config'
 import promisify from 'functional-helpers/promisify'
@@ -18,7 +19,7 @@ export default ({ events }) => {
     const { media_id_string } = await post('media/upload', { media_data: newImage })
 
     await post('media/metadata/create', { media_id: media_id_string, alt_text: { text } })
-    await post('statuses/update', { status: text, media_ids: [media_id_string] }) // eslint-disable-line camelcase
+    await post('statuses/update', { status: text, media_ids: [media_id_string] })
 
     events.emit('twitter.POST_MEDIA:DONE', { exchange, high, time, image })
   }

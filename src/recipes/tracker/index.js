@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { Observable } from 'rxjs'
 import moment from 'moment'
 
@@ -16,7 +17,7 @@ export default async ({
     .subscribe(({ exchange, trade: { trade_id, side, size, price, product_id, time } }) => {
       log.trace('track', JSON.stringify({ price, product_id }))
       const file = `${dataDir}/tracker-${getFileDate(new Date())}.csv`
-      const line = [trade_id, exchange, side, size, price, product_id, time].join(',') // eslint-disable-line camelcase
+      const line = [trade_id, exchange, side, size, price, product_id, time].join(',')
       fs.ensureDir(dataDir)
         .then(() => fs.appendFile(file, `${line}\n`, 'utf8'))
         .catch(err => log.error(err))

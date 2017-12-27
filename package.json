@@ -6,12 +6,12 @@
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
-    "start": "babel-node src/index all-time-high tracker",
+    "start": "babel-node src",
     "forever": "NODE_ENV=production forever start dist/index.js all-time-high tracker",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist",
     "dist": "npm run clean && babel src --out-dir dist",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -19,27 +19,26 @@
     "babel-preset-env": "^1.6.1",
     "bunyan": "^1.8.12",
     "bunyan-format": "^0.2.1",
-    "config": "^1.28.1",
-    "eventemitter2": "^4.1.2",
+    "config": "^1.29.0",
+    "eventemitter2": "^5.0.0",
     "forever": "^0.15.3",
     "fs-extra": "^5.0.0",
     "functional-helpers": "github:joelnet/functional-helpers",
     "gdax": "^0.4.2",
     "jimp": "^0.2.28",
     "js-yaml": "^3.10.0",
-    "moment": "^2.19.3",
+    "moment": "^2.20.1",
     "nedb": "^1.8.0",
     "numeral": "^2.0.6",
-    "queue-up": "^2.1.0",
     "ramda": "^0.25.0",
     "redux": "^3.7.2",
-    "rxjs": "^5.5.4",
+    "rxjs": "^5.5.6",
     "twit": "^2.2.9"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-register": "^6.26.0",
-    "eslint": "^4.11.0",
+    "eslint": "^4.14.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0"
   },
