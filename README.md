@@ -87,7 +87,9 @@ If tracker is running you can watch live price updates
 tail -f .data/tracker-<year>-<month>-<day>.csv
 ```
 
-## Licenses
+## License
+
+This software is released under the [MIT license](LICENSE).
 
 * Rocket - https://pixabay.com/en/rocket-spaceship-clip-art-clipart-2841765/
 * Creative-Tail-rocket.svg - By Creative Tail [CC BY 4.0 (http://creativecommons.org/licenses/by/4.0)], via Wikimedia Commons
