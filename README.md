@@ -27,6 +27,30 @@ gdax:
   passphrase:
 ```
 
+## Recipes
+
+Recipes are a way to combine individual parts into a working app. Multiple recipe's can be run simultaneously.
+
+Recipes can be turned on and off inside `config/default.yml`
+
+```yaml
+recipes:
+  - all-time-high
+  - tracker
+```
+
+### all-time-high recipe
+
+Dependencies: gdax, twitter, media
+
+The all-time-high recipe will listen to a socket connection to gdax, wait for a new all-time-high and then publish to twitter.
+
+### tracker
+
+Dependencies: gdax
+
+The tracker recipe will listen to a socket connection to gdax and log to `.data/`.
+
 ## Production Install
 
 ### Running as a shell script

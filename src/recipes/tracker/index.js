@@ -2,7 +2,7 @@
 import { Observable } from 'rxjs'
 import moment from 'moment'
 
-export const plugins = ['gdax', 'twitter', 'media']
+export const plugins = ['gdax']
 
 const dataDir = `${process.cwd()}/.data`
 
