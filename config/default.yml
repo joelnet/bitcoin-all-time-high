@@ -1,9 +1,13 @@
 ---
+recipes:
+  all-time-high:
+    - gdax
+    - twitter
+    - media
+  tracker:
+    - gdax
 debug:
   level: trace
-recipes:
-  - all-time-high
-  - tracker
 twitter:
   consumer_key:
   consumer_secret:

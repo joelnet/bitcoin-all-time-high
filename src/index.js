@@ -5,11 +5,11 @@ import fs from 'fs-extra'
 import './init'
 import Log from './log'
 import Datastore from './lib/datastore'
-import { getRecipes, getPlugins } from './lib/pluginHelper'
+import { getRecipes, getPluginNames } from './lib/pluginHelper'
 
-const recipeNames = config.get('recipes')
+const recipeNames = Object.keys(config.get('recipes'))
+const pluginNames = getPluginNames(config.get('recipes'))
 const recipes = getRecipes(recipeNames)
-const plugins = getPlugins(recipeNames)
 
 const events = new EventEmitter2({ wildcard: true })
 const log = Log({ name: 'all-time-high' })
@@ -20,7 +20,7 @@ const dependencies = { log, db, fs }
 
 log.info(`Starting [${recipeNames}].`)
 
-plugins
+pluginNames
   .map(name => require(`${__dirname}/plugins/${name}`).default)
   .map(plugin => plugin({ events }))
 

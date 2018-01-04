@@ -31,12 +31,16 @@ gdax:
 
 Recipes are a way to combine individual parts into a working app. Multiple recipe's can be run simultaneously.
 
-Recipes can be turned on and off inside `config/default.yml`
+Recipes can be turned on and off inside `config/default.yml`. Each recipe will list the plugins they require.
 
 ```yaml
 recipes:
-  - all-time-high
-  - tracker
+  all-time-high:
+    - gdax
+    - twitter
+    - media
+  tracker:
+    - gdax
 ```
 
 ### all-time-high recipe

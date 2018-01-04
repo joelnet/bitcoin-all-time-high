@@ -8,8 +8,6 @@ import createStore from './store'
 
 const isNotEmpty = complement(isEmpty)
 
-export const plugins = ['gdax', 'twitter', 'media']
-
 export default async ({
   dependencies: { db, log },
   events,

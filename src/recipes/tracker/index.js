@@ -2,8 +2,6 @@
 import { Observable } from 'rxjs'
 import moment from 'moment'
 
-export const plugins = ['gdax']
-
 const dataDir = `${process.cwd()}/.data`
 
 const getFileDate = date =>
