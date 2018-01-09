@@ -1,23 +1,39 @@
-import Jimp from 'jimp'
-import moment from 'moment'
-import numeral from 'numeral'
-import promisify from 'functional-helpers/promisify'
+import PImage from 'pureimage'
+import pipe from 'ramda/src/pipe'
+import fs from 'fs-extra'
+import { WritableStreamBuffer } from 'stream-buffers'
+
+const registerFont = (file, name) =>
+  new Promise(resolve => PImage.registerFont(file, name).load(resolve))
+
+const getImage = pipe(
+  fs.createReadStream,
+  PImage.decodePNGFromStream
+)
+
+const imageToBase64 = img => {
+  const stream = new WritableStreamBuffer()
+  return PImage.encodePNGToStream(img, stream)
+    .then(() => stream.getContentsAsString('base64'))
+}
+
+const writeText = (img, item) => {
+  const ctx = img.getContext('2d')
+  Object.assign(ctx, { fillStyle: item.color, font: `${item.size}pt 'Custom Font'` })
+  ctx.fillText(item.text, item.x, item.y)
+  return img
+}
+
+const writeTexts = texts => img =>
+  texts.reduce(writeText, img)
 
 export default ({ events }) => {
-  const mediaCreate = async ({ exchange, high, time }) => {
-    const fontBlackLg = await Jimp.loadFont(Jimp.FONT_SANS_64_BLACK)
-    const dollars = numeral(high).format('$0,0')
-    const dollarsAndCents = numeral(high).format('$0,0.00')
-    const date = moment(time)
-    const text = `🎉🎉 NEW ALL TIME HIGH 🎉🎉\n\n 1 Bitcoin = ${dollarsAndCents} USD\n\n ${date.format('dddd, MMMM Do YYYY, h:mm:ss a')} on ${exchange.toUpperCase()}`
-    const image = await Jimp.read(`${process.cwd()}/images/rocket1-506x253-2.png`)
-
-    image.print(fontBlackLg, 260, 90, dollars)
-
-    const base64 = await promisify(image.getBase64, image)(Jimp.MIME_PNG)
-
-    events.emit('media.CREATE:DONE', { exchange, high, time, image: base64, text })
-  }
+  const mediaCreate = async ({ exchange, high, time, data }) =>
+    registerFont(data.font, 'Custom Font')
+      .then(() => getImage(data.image))
+      .then(writeTexts(data.texts))
+      .then(imageToBase64)
+      .then(image => events.emit('media.CREATE:DONE', { exchange, high, time, image }))
 
   events.on('media.CREATE', mediaCreate)
 }
