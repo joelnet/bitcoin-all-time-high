@@ -1,21 +1,9 @@
 import PImage from 'pureimage'
-import pipe from 'ramda/src/pipe'
-import fs from 'fs-extra'
-import { WritableStreamBuffer } from 'stream-buffers'
+import getImageFromFile from './getImageFromFile'
+import imageToBase64 from './imageToBase64'
 
 const registerFont = (file, name) =>
   new Promise(resolve => PImage.registerFont(file, name).load(resolve))
-
-const getImage = pipe(
-  fs.createReadStream,
-  PImage.decodePNGFromStream
-)
-
-const imageToBase64 = img => {
-  const stream = new WritableStreamBuffer()
-  return PImage.encodePNGToStream(img, stream)
-    .then(() => stream.getContentsAsString('base64'))
-}
 
 const writeText = (img, item) => {
   const ctx = img.getContext('2d')
@@ -30,7 +18,7 @@ const writeTexts = texts => img =>
 export default ({ events }) => {
   const mediaCreate = async ({ exchange, high, time, data }) =>
     registerFont(data.font, 'Custom Font')
-      .then(() => getImage(data.image))
+      .then(() => getImageFromFile(data.image))
       .then(writeTexts(data.texts))
       .then(imageToBase64)
       .then(image => events.emit('media.CREATE:DONE', { exchange, high, time, image }))
