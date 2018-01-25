@@ -1,0 +1,8 @@
+node_modules
+.dockerignore
+.eslintignore
+.eslintrc.yml
+.git
+.gitignore
+.vscode
+
