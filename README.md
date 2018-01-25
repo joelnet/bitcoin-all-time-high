@@ -115,6 +115,27 @@ If tracker is running you can watch live price updates
 tail -f .data/tracker-<year>-<month>-<day>.csv
 ```
 
+# Docker
+
+Docker support is a work in progress.
+
+```bash
+# Pull the source
+git clone https://github.com/joelnet/bitcoin-all-time-high.git
+
+# Build the container (ARM)
+docker build -t joel/all-time-high -f Dockerfile.arm32v6 .
+
+# Run the container forever
+docker run -d --restart unless-stopped joel/all-time-high
+```
+
+Sometimes you need to log into a container to monitor it.
+
+```bash
+docker exec -it <id> /bin/sh
+```
+
 ## License
 
 This software is released under the [MIT license](LICENSE).
