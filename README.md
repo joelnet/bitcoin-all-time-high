@@ -130,13 +130,13 @@ docker build -t joel/all-time-high -f Dockerfile.arm32v6 .
 mkdir .data
 
 # Run the container forever
-docker run -v $(pwd)/.data:/var/www/.data -d --restart unless-stopped joel/all-time-high
+docker run --name all-time-high -v $(pwd)/.data:/var/www/.data -d --restart unless-stopped joel/all-time-high
 ```
 
 Sometimes you need to log into a container to monitor it.
 
 ```bash
-docker exec -it <id> /bin/sh
+docker exec -it all-time-high /bin/sh
 ```
 
 ## License
