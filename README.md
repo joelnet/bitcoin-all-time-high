@@ -126,8 +126,11 @@ git clone https://github.com/joelnet/bitcoin-all-time-high.git
 # Build the container (ARM)
 docker build -t joel/all-time-high -f Dockerfile.arm32v6 .
 
+# Create .data directory
+mkdir .data
+
 # Run the container forever
-docker run -d --restart unless-stopped joel/all-time-high
+docker run -v $(pwd)/.data:/var/www/.data -d --restart unless-stopped joel/all-time-high
 ```
 
 Sometimes you need to log into a container to monitor it.
