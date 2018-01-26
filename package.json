@@ -7,7 +7,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "babel-node src",
-    "forever": "NODE_ENV=production forever start dist/index.js",
+    "forever": "NODE_ENV=production forever dist/index.js",
     "clean": "rimraf dist",
     "dist": "npm run clean && babel src --out-dir dist",
     "lint": "eslint src",
