@@ -115,16 +115,20 @@ If tracker is running you can watch live price updates
 tail -f .data/tracker-<year>-<month>-<day>.csv
 ```
 
-# Docker
+## Docker
 
-Docker support is a work in progress.
+| Architecture | File               |
+|--------------|--------------------|
+| x86          | Dockerfile         |
+| arm32v6      | Dockerfile.arm32v6 |
+| arm32v7      | Dockerfile.arm32v6 |
 
 ```bash
 # Pull the source
 git clone https://github.com/joelnet/bitcoin-all-time-high.git
 
-# Build the container (ARM)
-docker build -t joel/all-time-high -f Dockerfile.arm32v6 .
+# Build the container
+docker build -t joel/all-time-high -f Dockerfile .
 
 # Create .data directory
 mkdir .data
