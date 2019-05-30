@@ -20,9 +20,9 @@ RUN apk del git
 COPY . .
 
 # Build dist from src and discard src
-RUN npm run dist
+RUN npm run build
 
 RUN npx rimraf src
 
 # Go time!
-CMD [ "npm", "run", "forever" ]
+CMD [ "npm", "run", "start" ]
