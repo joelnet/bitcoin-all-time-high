@@ -1,10 +1,9 @@
 import config from 'config'
 import Gdax from 'gdax'
 import { Observable } from 'rxjs'
-import propEq from 'ramda/src/propEq'
 
 const exchange = 'gdax'
-const isTypeMatch = propEq('type', 'match')
+const isTypeMatch = ({ type }) => type === 'match'
 
 export default ({ events }) => {
   const websocket = new Gdax.WebsocketClient(config.get('gdax.pairs'))
@@ -13,9 +12,12 @@ export default ({ events }) => {
     .filter(isTypeMatch)
     .subscribe(trade => events.emit('gdax.TRADE', { exchange, trade }))
 
-  Observable.fromEvent(websocket, 'close')
-    .subscribe(() => events.emit('gdax.CLOSE'))
+  Observable.fromEvent(websocket, 'close').subscribe(() => {
+    events.emit('gdax.CLOSE')
+    process.exit(1)
+  })
 
-  Observable.fromEvent(websocket, 'error')
-    .subscribe(err => events.emit('gdax.ERROR', { exchange, err }))
+  Observable.fromEvent(websocket, 'error').subscribe(err =>
+    events.emit('gdax.ERROR', { exchange, err })
+  )
 }

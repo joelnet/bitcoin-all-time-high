@@ -5,11 +5,14 @@
   "author": "",
   "license": "MIT",
   "main": "src/index.js",
+  "bin": "dist/index.js",
   "scripts": {
     "dev": "babel-node src",
-    "start": "NODE_ENV=production forever dist/index.js",
+    "start": "NODE_ENV=production node dist/index.js",
     "clean": "rimraf dist",
     "build": "npm run clean && babel src --out-dir dist",
+    "package": "npm run build && pkg --debug --targets=node10-linux-x64 .",
+    "tar": "rm all-time-high.tar && tar --exclude='.data' --exclude='.git' --exclude='all-time-high.tar' --exclude='node_modules' -zcvf all-time-high.tar ../all-time-high/",
     "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +21,7 @@
     "bunyan-format": "^0.2.1",
     "config": "^1.29.0",
     "eventemitter2": "^5.0.0",
+    "express": "^4.17.1",
     "forever": "^0.15.3",
     "fs-extra": "^5.0.0",
     "functional-helpers": "github:joelnet/functional-helpers",
@@ -27,6 +31,7 @@
     "nedb": "^1.8.0",
     "numeral": "^2.0.6",
     "opentype.js": "^0.7.3",
+    "prom-client": "^11.3.0",
     "pureimage": "^0.1.3",
     "ramda": "^0.25.0",
     "redux": "^3.7.2",
@@ -37,9 +42,17 @@
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
-    "eslint": "^4.14.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0"
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.17.1"
+  },
+  "pkg": {
+    "scripts": [
+      "dist/plugins/**/*.js",
+      "dist/recipes/**/*.js"
+    ]
   }
 }

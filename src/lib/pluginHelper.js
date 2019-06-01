@@ -8,10 +8,13 @@ import { join } from 'path'
 
 const dirname = join(__dirname, '..')
 
-export const getRecipes = map(recipeName => require(`${dirname}/recipes/${recipeName}`).default)
+export const getRecipes = map(
+  recipeName => require(`${dirname}/recipes/${recipeName}`).default
+)
 
-export const getPluginNames = recipes => pipe(
-  props(Object.keys(recipes)),
-  unnest,
-  uniq,
-)(recipes)
+export const getPluginNames = recipes =>
+  pipe(
+    props(Object.keys(recipes)),
+    unnest,
+    uniq
+  )(recipes)

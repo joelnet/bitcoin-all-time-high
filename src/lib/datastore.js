@@ -15,6 +15,6 @@ export default ({ filename, indexField }) => {
   return {
     find: promisify(db.find, db),
     insert: promisify(db.insert, db),
-    update: promisify(db.update, db),
+    update: promisify(db.update, db)
   }
 }

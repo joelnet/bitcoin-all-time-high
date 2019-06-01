@@ -4,13 +4,8 @@ import always from 'ramda/src/always'
 import pipeAsync from '../../lib/pipeAsync'
 
 const imageToStream = (img, stream = new WritableStreamBuffer()) =>
-  encodePNGToStream(img, stream)
-    .then(always(stream))
+  encodePNGToStream(img, stream).then(always(stream))
 
-const streamToBase64 = stream =>
-  stream.getContentsAsString('base64')
+const streamToBase64 = stream => stream.getContentsAsString('base64')
 
-export default pipeAsync(
-  imageToStream,
-  streamToBase64,
-)
+export default pipeAsync(imageToStream, streamToBase64)

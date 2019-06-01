@@ -4,7 +4,9 @@ recipes:
     - gdax
     - twitter
     - media
-  tracker:
+  # tracker:
+  #   - gdax
+  metrics:
     - gdax
 debug:
   level: trace
@@ -19,5 +21,8 @@ gdax:
   secret:
   passphrase:
   pairs:
-  - BTC-USD
+    - BTC-USD
+metrics:
+  port: 10080
+  host: 0.0.0.0
 debounce: 600000 # 10 minutes

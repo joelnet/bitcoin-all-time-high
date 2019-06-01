@@ -20,5 +20,5 @@ const defaultOptions = merge({ streams, level })
 
 export default pipe(
   defaultOptions,
-  createLogger,
+  createLogger
 )

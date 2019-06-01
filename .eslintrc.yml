@@ -1,15 +1,14 @@
-extends: airbnb-base
+env:
+  es6: true
+  node: true
+parserOptions:
+  ecmaVersion: 10
+  sourceType: module
+plugins:
+  - prettier
 rules:
-  semi:
-  - error
-  - never
-  arrow-parens:
-  - off
-  no-sequences:
-  - off
-  object-curly-newline:
-  - off
-  comma-dangle:
-  - off
-  no-confusing-arrow:
-  - off
+  prettier/prettier: error
+  no-undef: error
+  no-unused-vars: error
+extends:
+  - 'plugin:prettier/recommended'
