@@ -5,11 +5,10 @@ import { EventEmitter2 } from 'eventemitter2'
 import fs from 'fs-extra'
 import Log from './log'
 import Datastore from './lib/datastore'
-import { getRecipes, getPluginNames } from './lib/pluginHelper'
+import { loadPlugins } from './lib/loadPlugins'
+import { loadRecipes } from './lib/loadRecipes'
 
 const recipeNames = Object.keys(config.get('recipes'))
-const pluginNames = getPluginNames(config.get('recipes'))
-const recipes = getRecipes(recipeNames)
 
 const events = new EventEmitter2({ wildcard: true })
 const log = Log({ name: 'all-time-high' })
@@ -23,10 +22,5 @@ const dependencies = { log, db, fs }
 
 log.info(`Starting [${recipeNames}].`)
 
-pluginNames
-  .map(name => require(`${__dirname}/plugins/${name}`).default)
-  .map(plugin => plugin({ events }))
-
-recipes.map(recipe =>
-  recipe({ dependencies, events }).catch(err => dependencies.log.error(err))
-)
+loadPlugins({ recipes: config.get('recipes'), events })
+loadRecipes({ recipeNames, events, dependencies })
