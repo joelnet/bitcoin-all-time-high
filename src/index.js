@@ -1,4 +1,3 @@
-/* eslint-disable global-require,import/no-dynamic-require */
 import './init'
 import config from 'config'
 import { EventEmitter2 } from 'eventemitter2'

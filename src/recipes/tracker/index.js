@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { Observable } from 'rxjs'
 import moment from 'moment'
 
