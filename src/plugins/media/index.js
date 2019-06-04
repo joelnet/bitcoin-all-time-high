@@ -21,13 +21,20 @@ const writeText = (img, item) => {
 const writeTexts = texts => img => texts.reduce(writeText, img)
 
 export default ({ events }) => {
-  const mediaCreate = ({ exchange, high, time, data }) =>
+  const mediaCreate = ({ exchange, high, time, data, ...rest }) =>
     pipeAsync(
       () => registerFont(data.font, 'Custom Font'),
       () => getImageFromFile(data.image),
       writeTexts(data.texts),
       imageToBase64,
-      image => events.emit('media.CREATE:DONE', { exchange, high, time, image })
+      image =>
+        events.emit('media.CREATE:DONE', {
+          exchange,
+          high,
+          time,
+          image,
+          ...rest
+        })
     )()
 
   events.on('media.CREATE', mediaCreate)

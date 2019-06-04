@@ -1,7 +1,7 @@
 import { join } from 'path'
 import { getPluginNames } from './pluginHelper'
 
-const root = join(process.cwd(), 'src/plugins')
+const root = join(__dirname, '../plugins')
 
 export const loadPlugins = ({ recipes, events }) =>
   getPluginNames(recipes)

@@ -12,7 +12,6 @@
     "clean": "rimraf dist",
     "build": "npm run clean && babel src --out-dir dist",
     "package": "npm run build && pkg --debug --targets=node10-linux-x64 .",
-    "tar": "rm all-time-high.tar && tar --exclude='.data' --exclude='.git' --exclude='all-time-high.tar' --exclude='node_modules' -zcvf all-time-high.tar ../all-time-high/",
     "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
