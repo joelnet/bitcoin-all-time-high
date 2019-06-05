@@ -150,4 +150,4 @@ docker exec -it all-time-high /bin/sh
 This software is released under the [MIT license](LICENSE).
 
 - Rocket - https://pixabay.com/en/rocket-spaceship-clip-art-clipart-2841765/
-- Creative-Tail-rocket.svg - By Creative Tail [CC BY 4.0 (http://creativecommons.org/licenses/by/4.0)], via Wikimedia Commons
+- Creative-Tail-rocket.svg - By Creative Tail [CC BY 4.0](http://creativecommons.org/licenses/by/4.0), via Wikimedia Commons
