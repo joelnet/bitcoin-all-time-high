@@ -20,10 +20,16 @@ tar \
   --exclude='.prettierrc.yaml' \
   --exclude='Dockerfile.arm32v6' \
   --exclude='all-time-high.tar' \
-  --exclude='package-lock.json' \
   -zcvf ../all-time-high.tar \
   ../all-time-high/
 
 scp ../all-time-high.tar theia:/media/sdt1/home/jtnet/node/apps
 
-ssh theia 'cd ~/node/apps && tar -xvf all-time-high.tar'
+ssh theia 'source .profile &&
+  cd node/apps/all-time-high &&
+  rm -rf dist &&
+  cd .. &&
+  tar -xvf all-time-high.tar &&
+  cd all-time-high &&
+  npm ci &&
+  kill -- -$(ps -o pgid= `cat ~/once.d/all-time-high.pid` | grep -o '[0-9]*')'
