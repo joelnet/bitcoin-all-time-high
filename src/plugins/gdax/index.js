@@ -12,10 +12,9 @@ export default ({ events }) => {
     .filter(isTypeMatch)
     .subscribe(trade => events.emit('gdax.TRADE', { exchange, trade }))
 
-  Observable.fromEvent(websocket, 'close').subscribe(() => {
+  Observable.fromEvent(websocket, 'close').subscribe(() =>
     events.emit('gdax.CLOSE')
-    process.exit(1)
-  })
+  )
 
   Observable.fromEvent(websocket, 'error').subscribe(err =>
     events.emit('gdax.ERROR', { exchange, err })
