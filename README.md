@@ -4,7 +4,7 @@ Source Code for [@AllTimeHighBot](https://twitter.com/AllTimeHighBot).
 
 Example:
 
-![Bitcoin All-Time-High Tweet](./images/tweet.png "Bitcoin All-Time-High Tweet")
+![Bitcoin All-Time-High Tweet](./images/tweet.png 'Bitcoin All-Time-High Tweet')
 
 ## Configuration
 
@@ -48,6 +48,8 @@ recipes:
 Dependencies: gdax, twitter, media
 
 The all-time-high recipe will listen to a socket connection to gdax, wait for a new all-time-high and then publish to twitter.
+
+![All Time High Sequence Diagram](./images/All%20Time%20High%20Flow.png 'All Time High Sequence Diagram')
 
 ### tracker
 
@@ -118,7 +120,7 @@ tail -f .data/tracker-<year>-<month>-<day>.csv
 ## Docker
 
 | Architecture | File               |
-|--------------|--------------------|
+| ------------ | ------------------ |
 | x86          | Dockerfile         |
 | arm32v6      | Dockerfile.arm32v6 |
 | arm32v7      | Dockerfile.arm32v6 |
