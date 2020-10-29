@@ -3,7 +3,7 @@ import pipe from 'mojiscript/core/pipe/sync'
 
 const isGdax = ({ exchange }) => exchange === 'gdax'
 const isPeriodAllTime = ({ period }) => period === undefined
-const isPeriod2019 = ({ period }) => period === '2019'
+const isPeriod2020 = ({ period }) => period === '2020'
 
 const getAllTimeHigh = pipe([
   filter(allPass([isGdax, isPeriodAllTime])),
@@ -11,8 +11,8 @@ const getAllTimeHigh = pipe([
   head
 ]) // prettier-ignore
 
-const get2019High = pipe([
-  filter(allPass([isGdax, isPeriod2019])),
+const get2020High = pipe([
+  filter(allPass([isGdax, isPeriod2020])),
   map(({ high }) => high),
   head
 ]) // prettier-ignore
@@ -20,5 +20,5 @@ const get2019High = pipe([
 export const getHighs = db =>
   db.highs.find({}).then(highs => ({
     high: getAllTimeHigh(highs),
-    high2019: get2019High(highs)
+    high2020: get2020High(highs)
   }))

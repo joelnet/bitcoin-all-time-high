@@ -4,7 +4,7 @@ import numeral from 'numeral'
 import { Observable } from 'rxjs'
 
 export const event = ({ events, log, db }) =>
-  Observable.fromEvent(events, 'core.NEW_2019_HIGH')
+  Observable.fromEvent(events, 'core.NEW_2020_HIGH')
     .debounceTime(config.get('debounce'))
     .subscribe(async ({ price: high, exchange, time }) => {
       log.debug(
@@ -13,8 +13,8 @@ export const event = ({ events, log, db }) =>
       )
 
       await db.highs.update(
-        { exchange, period: '2019' },
-        { $set: { exchange, high, period: '2019' } },
+        { exchange, period: '2020' },
+        { $set: { exchange, high, period: '2020' } },
         { upsert: true }
       )
 
@@ -39,7 +39,7 @@ export const event = ({ events, log, db }) =>
 
       const date = moment(time)
       const dollarsAndCents = numeral(high).format('$0,0.00')
-      const text = `🎉🎉 NEW HIGH IN 2019 🎉🎉\n\n 1 Bitcoin = ${dollarsAndCents} USD\n\n ${date.format(
+      const text = `🎉🎉 NEW HIGH IN 2020 🎉🎉\n\n 1 Bitcoin = ${dollarsAndCents} USD\n\n ${date.format(
         'dddd, MMMM Do YYYY, h:mm:ss a'
       )} on ${exchange.toUpperCase()}`
 

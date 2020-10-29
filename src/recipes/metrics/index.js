@@ -13,9 +13,9 @@ export default async ({ dependencies: { db, log }, events } = {}) => {
     help: 'All Time High price of Bitcoin on Coinbase Pro'
   })
 
-  const bitcoin2019HighGauge = new client.Gauge({
-    name: 'ath_coinbase_2019_high',
-    help: '2019 High price of Bitcoin on Coinbase Pro'
+  const bitcoin2020HighGauge = new client.Gauge({
+    name: 'ath_coinbase_2020_high',
+    help: '2020 High price of Bitcoin on Coinbase Pro'
   })
 
   const upGauge = new client.Gauge({
@@ -40,14 +40,14 @@ export default async ({ dependencies: { db, log }, events } = {}) => {
       .filter(({ period }) => period === undefined)
       .map(({ high }) => Number(high))[0]
 
-    const bitcoin2019High = highs
-      .filter(({ period }) => period === '2019')
+    const bitcoin2020High = highs
+      .filter(({ period }) => period === '2020')
       .map(({ high }) => Number(high))[0]
 
-    log.trace({ allTimeHigh, bitcoin2019High })
+    log.trace({ allTimeHigh, bitcoin2020High: bitcoin2020High })
 
     allTimeHighGauge.set(allTimeHigh)
-    bitcoin2019HighGauge.set(bitcoin2019High)
+    bitcoin2020HighGauge.set(bitcoin2020High)
   })
 
   express()

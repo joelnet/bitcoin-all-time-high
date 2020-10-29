@@ -35,7 +35,7 @@ export const event = ({ events, log, db }) =>
 
       const date = moment(time)
       const dollarsAndCents = numeral(high).format('$0,0.00')
-      const text = `🎉🎉 NEW HIGH IN 2019 🎉🎉\n\n 1 Bitcoin = ${dollarsAndCents} USD\n\n ${date.format(
+      const text = `🎉🎉 NEW HIGH IN 2020 🎉🎉\n\n 1 Bitcoin = ${dollarsAndCents} USD\n\n ${date.format(
         'dddd, MMMM Do YYYY, h:mm:ss a'
       )} on ${exchange.toUpperCase()}`
 
