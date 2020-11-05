@@ -2,6 +2,7 @@ import config from 'config'
 import moment from 'moment'
 import numeral from 'numeral'
 import { Observable } from 'rxjs'
+import 'moment-timezone'
 
 export const event = ({ events, log, db }) =>
   Observable.fromEvent(events, 'core.NEW_2020_HIGH')
@@ -39,9 +40,9 @@ export const event = ({ events, log, db }) =>
 
       const date = moment(time)
       const dollarsAndCents = numeral(high).format('$0,0.00')
-      const text = `🎉🎉 NEW HIGH IN 2020 🎉🎉\n\n 1 Bitcoin = ${dollarsAndCents} USD\n\n ${date.format(
-        'dddd, MMMM Do YYYY, h:mm:ss a'
-      )} on ${exchange.toUpperCase()}`
+      const text = `🎉🎉 NEW HIGH IN 2020 🎉🎉\n\n 1 Bitcoin = ${dollarsAndCents} USD\n\n ${date
+        .tz(config.get('timezone'))
+        .format('dddd, MMMM Do YYYY, h:mm:ss a')} on ${exchange.toUpperCase()}`
 
       events.emit('media.CREATE', { exchange, high, time, data, text })
     })

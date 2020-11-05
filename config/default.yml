@@ -1,4 +1,5 @@
 ---
+timezone: America/Los_Angeles
 recipes:
   all-time-high:
     - gdax
