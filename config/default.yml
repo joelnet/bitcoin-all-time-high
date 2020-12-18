@@ -12,6 +12,7 @@ recipes:
 debug:
   level: trace
 twitter:
+  enabled: true
   consumer_key:
   consumer_secret:
   access_token:
