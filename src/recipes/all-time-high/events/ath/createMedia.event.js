@@ -13,7 +13,11 @@ export const event = ({ events, log, db }) =>
         JSON.stringify({ exchange, high, time })
       )
 
-      await db.highs.update({ exchange }, { $set: { high } }, { upsert: true })
+      await db.highs.update(
+        { exchange, period: { $exists: false } },
+        { $set: { high } },
+        { upsert: true }
+      )
 
       const value = numeral(high).format('$0,0')
 
