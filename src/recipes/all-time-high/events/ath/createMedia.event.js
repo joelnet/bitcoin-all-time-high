@@ -38,9 +38,9 @@ export const event = ({ events, log, db }) =>
         ]
       }
 
-      const date = moment(time)
+      const date = moment(time).ye
       const dollarsAndCents = numeral(high).format('$0,0.00')
-      const text = `🎉🎉 NEW HIGH IN 2020 🎉🎉\n\n 1 Bitcoin = ${dollarsAndCents} USD\n\n ${date
+      const text = `🎉🎉 NEW HIGH IN ${date.year()} 🎉🎉\n\n 1 Bitcoin = ${dollarsAndCents} USD\n\n ${date
         .tz(config.get('timezone'))
         .format('dddd, MMMM Do YYYY, h:mm:ss a')} on ${exchange.toUpperCase()}`
 
