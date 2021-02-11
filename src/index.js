@@ -19,6 +19,16 @@ const db = {
 }
 const dependencies = { log, db, fs }
 
+process.on('uncaughtException', function(err) {
+  log.error(err)
+  process.exit(1)
+})
+
+process.on('unhandledRejection', function(reason, p) {
+  log.error('Possibly Unhandled Rejection at: Promise ', p, ' reason: ', reason)
+  process.exit(1)
+})
+
 log.info(`Starting [${recipeNames}].`)
 
 loadPlugins({ recipes: config.get('recipes'), events })
