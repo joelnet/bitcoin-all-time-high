@@ -28,7 +28,7 @@
     "js-yaml": "^3.13.1",
     "mojiscript": "^0.13.1",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.31",
+    "moment-timezone": "^0.5.35",
     "nedb": "^1.8.0",
     "numeral": "^2.0.6",
     "opentype.js": "^1.1.0",
